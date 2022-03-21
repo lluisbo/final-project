@@ -16,7 +16,7 @@
         <PasswordField  v-model="user.password"/> 
         </article>
         <article>
-         <ButtonComponent Type="submit">LOG IN</ButtonComponent>
+         <ButtonComponent type="submit">LOG IN</ButtonComponent>
         </article>
 
 

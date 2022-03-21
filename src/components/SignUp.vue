@@ -1,26 +1,32 @@
 <template>
-   <form @submit.prevent novalidate>
-     <article>
-       <h3>CREATE YOUR ACCOUNT</h3>
-     </article>
-     <article>
-       <LabelField>Name</LabelField>
-       <NameField v-model="user.name"/>
-     </article>
-      <article>
-        <LabelField For="email">Email</LabelField>
-        <EmailField v-model="user.email"/>
-        </article>
-      <article>
-        <LabelField For="password">Password</LabelField>
-        <PasswordField  v-model="user.password"/> 
-        </article>
-        <article>
-         <ButtonComponent Type="submit">REGISTER</ButtonComponent>
+  
+  <section class="flex flex-row w-3/4 bg-blue-900 rounded-lg justify-start shadow-lg shadow-black/40 border-2  m-5">
+   <form class="flex flex-col m-4" @submit.prevent novalidate>
+     <article class="mb-4">
+      <h1 class="text-white mt-4 font-bold px-3 text-3xl" >CREATE YOUR ACCOUNT</h1>
         </article>
 
+     <article class=" block mb-4">
+      <LabelField>Name</LabelField>
+      <NameField v-model="user.name"/>
+        </article>
 
+     <article class="mb-4">
+      <LabelField For="email">Email</LabelField>
+      <EmailField v-model="user.email"/>
+        </article>
+
+     <article class="mb-4">
+      <LabelField For="password">Password</LabelField>
+      <PasswordField  v-model="user.password"/> 
+        </article>
+
+     <article class="mb-6">
+      <ButtonComponent  type="submit" :onClick="HandleSubmit">Sign up</ButtonComponent>
+        </article>
    </form>
+  </section>
+ 
 </template>
 
 <script setup>

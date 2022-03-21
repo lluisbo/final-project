@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <section class="px-4">
        <input
+          class="py-2.5 px-2 rounded w-80"
           type="password"
-          class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-          placeholder="Your password"
+          placeholder="Enter your password"
           autocomplete="off"
           v-model="password"
         />

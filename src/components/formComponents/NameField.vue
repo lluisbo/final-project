@@ -1,9 +1,10 @@
 <template>
-   <section class="border-teal p-8 border-t-12 mb-6 rounded-lg shadow-lg bg-white">
-      <article class="mb-4">
+   <section class="px-4">
+      <article>
         <input
+           class="py-2.5  px-2 rounded w-80"
            type="text"
-           placeholder="username"
+           placeholder="Choose your username"
            autocomplete="off"
            v-model="input"
         />
