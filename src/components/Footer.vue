@@ -1,36 +1,37 @@
 <template>
   <footer
-    class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"
+    class="w-full shadow md:flex justify-center"
   >
-   <a href="http://www.boriamusic.com" class="hover:underline"
-        >www.2DoList.com</a>
-    <span class="text-sm text-black sm:text-right dark:text-gray-400"
-      >© 2022 || All Rights Reserved.
+   
+    <span class="text-sm text-black sm:text-left dark:text-gray-400 p-2"
+      >2DoList © 2022 || All Rights Reserved. 
     </span>
+    
     <ul
       class="flex flex-wrap items-center mt-3  text-gray-500 dark:text-gray-400 sm:mt-0"
     >
       <li>
-        <a href="#" class="text-amber-700 mr-4 hover:underline md:mr-6"
-          >About</a
+        <a href="#" class="text-green-500 mr-4 hover:underline md:mr-6"
+          > About</a
         >
       </li>
       <li>
-        <a href="#" class="text-amber-700 mr-4 hover:underline md:mr-6"
+        <a href="#" class="text-green-500 mr-4 hover:underline md:mr-6"
           >Privacy Policy</a
         >
       </li>
       <li>
-        <a href="#" class="text-amber-700 mr-4 hover:underline md:mr-6"
+        <a href="#" class="text-green-500 mr-4 hover:underline md:mr-6"
           >Licensing</a
         >
       </li>
       <li>
-        <a href="#" class="text-amber-700 mr-4 hover:underline md:mr-6"
+        <a href="mailto:allocateddesign@gmail.com" class="text-green-500 mr-4 hover:underline md:mr-6"
           >Contact</a
         >
-      </li>
+  </li>
     </ul>
+     <br>
   </footer>
 </template>
 
