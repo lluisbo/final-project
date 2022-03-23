@@ -1,5 +1,5 @@
 <template>
-  <section class="max-w-screen-sm mx-auto mt-20 px-4 py-10 bg-red-900 flex flex-col items-center rounded-lg shadow-md bg-blend-overlay">
+  <section class="max-w-screen-sm w-96 mx-auto mt-20 px-4 py-10 bg-red-900 flex flex-col items-center rounded-lg shadow-md bg-blend-overlay">
                   <!--- HANDLE ERRORS ---->
       <div v-if="errorsMSG">
           <p>{{ errorsMSG }}</p>

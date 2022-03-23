@@ -1,15 +1,11 @@
-<template>
-  <div>
-    <img src="../assets/logo.png" alt="logo"/>
-    <p>{{user.email}}</p>
-  </div>
-</template>
+<script setup>
+import ProfileUser from "../components/ProfileUser.vue";
 
-<script>
-export default {
-
-}
 </script>
+
+<template>
+ <ProfileUser />
+</template>
 
 <style>
 

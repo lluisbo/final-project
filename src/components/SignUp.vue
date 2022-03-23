@@ -1,5 +1,5 @@
 <template>
-  <section class="max-w-screen-sm mx-auto mt-20 px-4 py-10 bg-red-900 flex flex-col items-center rounded-lg">
+  <section class="max-w-screen-sm  w-96 mx-auto mt-20 px-4 py-10 bg-red-900 flex flex-col items-center rounded-lg">
                   <!--- HANDLE ERRORS ---->
       <div v-if="errorsMSG">
           <p>{{ errorsMSG }}</p>
@@ -7,6 +7,16 @@
                   <!--- SIGNUP FORM ---->
       <form @submit.prevent="signUp">
           <h1 class="mb-4 text-3xl text-white font-bold" >SIGN UP</h1>
+        <article class="flex flex-col mb-4">
+             <label class="text-white" for="email">Username</label>
+            <input  class="text-sm py-2.5 px-2 rounded w-80 focus:outline-none"
+                    required
+                    id="userName"
+                    type="text"
+                    placeholder="Choose a username"
+                    autocomplete="off"
+                    v-model="userName"/>
+        </article>
         <article class="flex flex-col mb-4">
             <label class="text-white" for="email">Email</label>
             <input  class="text-sm py-2.5 px-2 rounded w-80 focus:outline-none"
@@ -39,9 +49,10 @@
                    v-model="confirmPassword">
         </article>
         <article class="mb-4">
-         <button  type="submit" class="bg-red-500 hover:bg-red-400 text-white .font-bold py-2 px-4 rounded">
+         <button type="submit" class="bg-red-500 hover:bg-red-400 text-white .font-bold py-2 px-4 rounded">
          Sign up
          </button>
+         <svg class="animate-spin h-5 w-5 mr-3 fill-white" viewBox="0 0 24 24"></svg>
          </article>
          <article>
          <router-link class="text-red-200" :to="{name: 'login'}">Already have an account?<span class="text-lg text-white px-2 hover:text-green-500">Log in</span></router-link>
@@ -54,16 +65,21 @@ import { ref } from 'vue';
 //import { useUserStore } from '../store/user';
 import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
+import { useLoading } from 'vue3-loading-overlay';
+
 export default {
   
   setup() {
     // Create data / vars
 
     const router = useRouter();
+    const userName = ref(null)
     const email = ref(null);
     const password = ref(null);
     const confirmPassword = ref(null);
     const errorsMSG = ref(null);
+    const isLoading = ref(false);
+    const fullPage = ref(true);
     //const signUp = useUserStore()
 
      //Register function
@@ -71,11 +87,14 @@ export default {
       if (password.value === confirmPassword.value) {
         try {
           const { error } = await supabase.auth.signUp({
+            userName: userName.value,
             email: email.value,
             password: password.value,
           });
           if (error) throw error;
-          router.push({ name: "login" });
+          setTimeout(() => {
+           router.push({ name: "login" }); 
+          }, 5000)
         } catch (error) {
           errorsMSG.value = error.message;
           setTimeout(() => {
@@ -89,7 +108,7 @@ export default {
         errorsMSG.value = null;
       }, 5000);
     };
-    return { email, password, confirmPassword, errorsMSG, signUp };
+    return { userName, email, password, confirmPassword, errorsMSG, signUp };
   },
 };
 </script>
