@@ -1,13 +1,13 @@
 <script setup>
-import SignIn from '../components/SignIn.vue';
-
+import Nav from "../components/Nav.vue";
+import SignIn from "../components/SignIn.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
- <SignIn />
+  <Nav />
+  <SignIn />
+  <Footer />
 </template>
 
-
-
-<style>
-</style>
+<style></style>

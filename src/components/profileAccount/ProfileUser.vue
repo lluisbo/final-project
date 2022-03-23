@@ -1,20 +1,9 @@
-<template>
-  <div class="w-full h-full">
-    <aside class="flex flex-row w-72 h-full justify-start bg-red-900">
-      <div class=" w-72 h-full bg-red-900 flex flex-col m-10">
-        <img class="w-52 p-4" src="https://terrassadigital.cat/wp-content/uploads/2021/11/lluis-boria.jpg" alt="avatar" />
-        <p class="text-white">Username</p>
-        <p class="text-white">Website</p>
-     </div>
-    </aside>
- </div>
-</template>
+<template></template>
 
 <script>
 import { ref } from "vue";
 import { supabase } from "../../supabase";
 export default {
- 
   setup() {
     // Create data / vars
     const data = ref();
@@ -22,7 +11,9 @@ export default {
     // Get data
     const setUsername = async () => {
       try {
-        const { data: profile, error } = await supabase.from('profiles').select('*');
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("*");
         if (error) throw error;
         data.value = profile;
         dataLoaded.value = true;
@@ -34,9 +25,7 @@ export default {
     setUsername();
     return { data, dataLoaded };
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,14 +1,15 @@
 <script setup>
-import SignUp from '../components/SignUp.vue';
-
-
+import SignUp from "../components/SignUp.vue";
+import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
-<SignUp />
+  <section class="flex flex-col justify-end">
+    <Nav />
+    <SignUp />
+    <Footer />
+  </section>
 </template>
 
-
-
-<style>
-</style>
+<style></style>
