@@ -1,10 +1,10 @@
 <template>
   <section
-    class="relative w-5/6 mx-auto mt-10 px-4 py-10 bg-amber-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
+    class="relative pt-16 pb-0 md:py-3 w-5/6 mx-auto mt-10 px-4  bg-amber-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
   >
     <section class="w-5/6 h-full px-4">
       <img
-        class="md:absolute md:top-0 md:right-0 mx-auto md:h-full md:w-2/5 lg:w-1/2 md:object-cover"
+        class="md:absolute md:top-0 md:left-0 mx-auto md:h-full md:w-2/5 lg:w-1/2 md:object-cover"
         src="../assets/flat-lay-notebook-with-list-desk.jpeg"
       />
       <!--- HANDLE ERRORS ---->
@@ -28,7 +28,7 @@
         >
         <div class="relative">
           <div
-            class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+            class="flex absolute inset-y-0 left-0 pl-3 pointer-events-none"
           >
             <svg
               class="w-5 h-5 text-amber-900"

@@ -18,7 +18,7 @@
       </div>
     </div>
     <img
-      class="md:absolute md:top-0 md:right-0 mx-auto md:h-full md:w-2/5 lg:w-1/2 md:object-cover"
+      class="md:absolute md:top-0 md:-0 mx-auto md:h-full md:w-2/5 lg:w-1/2 md:object-cover"
       src="https://www.artmajeur.com/medias/standard/j/g/jgsprayart/artwork/12857594_img-20191129-092229.jpg"
       alt=""
     />
