@@ -8,16 +8,6 @@
       <form @submit.prevent="signUp">
           <h1 class="mb-4 text-3xl text-white font-bold" >SIGN UP</h1>
         <article class="flex flex-col mb-4">
-             <label class="text-white" for="email">Username</label>
-            <input  class="text-sm py-2.5 px-2 rounded w-80 focus:outline-none"
-                    required
-                    id="userName"
-                    type="text"
-                    placeholder="Choose a username"
-                    autocomplete="off"
-                    v-model="userName"/>
-        </article>
-        <article class="flex flex-col mb-4">
             <label class="text-white" for="email">Email</label>
             <input  class="text-sm py-2.5 px-2 rounded w-80 focus:outline-none"
                     required
@@ -64,8 +54,7 @@
 import { ref } from 'vue';
 //import { useUserStore } from '../store/user';
 import { supabase } from "../supabase";
-import { useRouter } from "vue-router";
-import { useLoading } from 'vue3-loading-overlay';
+
 
 export default {
   
@@ -73,13 +62,11 @@ export default {
     // Create data / vars
 
     const router = useRouter();
-    const userName = ref(null)
     const email = ref(null);
     const password = ref(null);
     const confirmPassword = ref(null);
     const errorsMSG = ref(null);
-    const isLoading = ref(false);
-    const fullPage = ref(true);
+    
     //const signUp = useUserStore()
 
      //Register function
@@ -87,7 +74,6 @@ export default {
       if (password.value === confirmPassword.value) {
         try {
           const { error } = await supabase.auth.signUp({
-            userName: userName.value,
             email: email.value,
             password: password.value,
           });
@@ -108,7 +94,7 @@ export default {
         errorsMSG.value = null;
       }, 5000);
     };
-    return { userName, email, password, confirmPassword, errorsMSG, signUp };
+    return { email, password, confirmPassword, errorsMSG, signUp };
   },
 };
 </script>
