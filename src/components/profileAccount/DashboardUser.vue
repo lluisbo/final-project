@@ -84,10 +84,9 @@
                 d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
               ></path>
             </svg>
-            <span class="flex-1 ml-3 text-white whitespace-nowrap"
-              >Settings</span
-            >
+           <span class="flex-1 ml-3 text-white whitespace-nowrap">Settings</span>
           </a>
+          <SettingsForm />
         </li>
         <li class="flex flex-row">
           <svg
@@ -115,6 +114,10 @@
   </aside>
 </template>
 
-<script setup></script>
+<script setup>
+
+
+
+</script>
 
 <style></style>

@@ -1,10 +1,9 @@
-<template>
-  <ProfileUser />
-  <SettingsUser />
-</template>
 <script setup>
-import ProfileUser from "../components/profileAccount/ProfileUser.vue";
-import SettingsUser from "../components/profileAccount/DashboardUser.vue";
+import DashboardUser from "../components/profileAccount/DashboardUser.vue";
 </script>
+
+<template>
+  <DashboardUser />
+</template>
 
 <style></style>

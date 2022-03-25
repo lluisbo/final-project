@@ -99,48 +99,42 @@
         </article>
 
         <article class="flex flex-row">
-          <router-link class="text-black" :to="{ name: 'auth' }">
-            Not registered?
-            <span
-              class="text-sm font-medium text-white px-2 hover:text-indigo-500"
-            >
-              Create account</span
-            ></router-link
-          >
+          <CustomLink to="internal">
+            Not registered? Create an account!
+          </CustomLink>
         </article>
       </form>
     </section>
   </section>
 </template>
-<script>
+<script setup>
 import { ref } from "vue";
 import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
-export default {
-  setup() {
-    // Create data / vars
-    const router = useRouter();
-    const email = ref(null);
-    const password = ref(null);
-    const errorsMSG = ref(null);
-    // Login function
-    const signIn = async () => {
-      try {
-        const { error } = await supabase.auth.signIn({
-          email: email.value,
-          password: password.value,
-        });
-        if (error) throw error;
-        router.push({ name: "home" });
-      } catch (error) {
-        errorsMSG.value = `Error: ${error.message}`;
-        setTimeout(() => {
-          errorsMSG.value = null;
-        }, 5000);
-      }
-    };
-    return { email, password, errorsMSG, signIn };
-  },
+import CustomLink from "../utilities/CustomLink.vue";
+
+// Create data / vars
+
+const router = useRouter();
+const email = ref(null);
+const password = ref(null);
+const errorsMSG = ref(null);
+// Login function
+const signIn = async () => {
+  try {
+    const { error } = await supabase.auth.signIn({
+      email: email.value,
+      password: password.value,
+    });
+    if (error) throw error;
+    router.push({ name: "home" });
+  } catch (error) {
+    errorsMSG.value = `Error: ${error.message}`;
+    setTimeout(() => {
+      errorsMSG.value = null;
+    }, 5000);
+  }
+  return { email, password, errorsMSG, signIn };
 };
 </script>
 <style></style>

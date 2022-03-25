@@ -7,18 +7,18 @@
     </section>
       <section>
         <ul class="flex flex-1 justify-end text-sm mt-5 gap-x-10 mr-10">
-          <router-link :to="{ name: 'home' }">Home</router-link>
-          <router-link :to="{ name: 'profile' }">profile</router-link>
-          <router-link :to="{ name: 'auth' }">Sign up</router-link>
-          <router-link :to="{ name: 'login' }">Log in</router-link>
+          <CustomLink to="internal">Home</CustomLink>
+          <CustomLink to="internal">Profile</CustomLink>
+          <CustomLink to="internal">Sing up</CustomLink>
+          <CustomLink to="internal">Log in</CustomLink>
         </ul>
       </section>
     </nav>
   </header>
 </template>
 
-<script>
-export default {};
+<script setup>
+import CustomLink from '../utilities/CustomLink.vue';
 </script>
 
 <style></style>
