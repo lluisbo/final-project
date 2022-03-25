@@ -13,10 +13,10 @@ onMounted(async () => {
     await userStore.fetchUser(); // here we call fetch user
     if (!user.value) {
       // redirect them to logout if the user is not there
-      router.push({ path: "/auth" });
+      router.push({ path: "/login" });
     } else {
       // continue to dashboard
-      router.push({ path: "/profile" });
+      router.push({ path: "/profile"}) ;
     }
   } catch (e) {
     console.log(e);
@@ -26,7 +26,6 @@ onMounted(async () => {
 
 <template>
   <section>
-    <Nav />
     <router-view class="app-main" />
     <!-- your routes will load inside of these tags -->
   </section>

@@ -65,49 +65,10 @@
             <span class="flex-1 ml-3 text-white whitespace-nowrap">Tasks</span>
           </a>
         </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
-          >
-            <svg
-              class="w-6 h-6 text-white transition duration-75 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-              ></path>
-            </svg>
-           <span class="flex-1 ml-3 text-white whitespace-nowrap">Settings</span>
-          </a>
-          <SettingsForm />
+        <li class="flex flex-row">
+          <SettingsForm>Settings</SettingsForm>
         </li>
         <li class="flex flex-row">
-          <svg
-            class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            ></path>
-          </svg>
-          <router-link
-            class="ml-3 text-white whitespace-nowrap"
-            :to="{ name: 'login' }"
-            >Log out</router-link
-          >
         </li>
       </ul>
     </div>

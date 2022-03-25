@@ -1,6 +1,6 @@
 <!--- External and Internal Navigation  <router-link> && <a>---->
 <template>
-  <a v-if="customLink ? 'href' || 'mailto:' : null" :href="to"><slot /></a>
+  <a v-if="customLink ? 'href' : null" :href="to"><slot /></a>
   <router-link v-else v-bind="$props"><slot /></router-link>
 </template>
 

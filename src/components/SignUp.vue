@@ -2,23 +2,26 @@
   <section
     class="relative pt-16 pb-0 md:py-3 w-5/6 mx-auto mt-10 px-4 bg-amber-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
   >
-    <section class="w-5/6 h-full px-4">
+    <section class="w-5/6 h-full px-4 flex place-content-center">
       <!--- HANDLE ERRORS ---->
       <section
         v-if="errorsMSG"
         class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
         role="alert"
       >
-        <span class="font-medium">Danger alert!</span>
+        <span class="flex place-content-center font-medium">Danger alert!</span>
+
         <p>{{ errorsMSG }}</p>
       </section>
-    </section>
-    <section
-      class="hidden p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-      role="alert"
-    >
-      <span class="font-medium">Success alert!</span> Change a few things up and
-      try submitting again.
+      <!--- Throw a success message when a user is created ---->
+      <section
+        v-if="IsSubmit"
+        class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+        role="alert"
+      >
+        <span class="font-medium">Success alert!</span> Your account has been created, please check out your inbox mail
+        and confirm your account through the link we sent you.
+      </section>
     </section>
     <section>
       <!--- SIGN UP FORM ---->
@@ -145,6 +148,7 @@
     </section>
   </section>
 </template>
+
 <script setup>
 import { ref } from "vue";
 //import { useUserStore } from '../store/user';
@@ -159,7 +163,7 @@ const email = ref(null);
 const password = ref(null);
 const confirmPassword = ref(null);
 const errorsMSG = ref(null);
-const isDisabled = ref(false);
+const IsSubmit = ref(null);
 
 //Register function
 const signUp = async () => {

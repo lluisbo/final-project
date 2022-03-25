@@ -127,7 +127,7 @@ const signIn = async () => {
       password: password.value,
     });
     if (error) throw error;
-    router.push({ name: "home" });
+    router.push({ name: "profile" });
   } catch (error) {
     errorsMSG.value = `Error: ${error.message}`;
     setTimeout(() => {
