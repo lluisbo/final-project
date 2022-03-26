@@ -1,6 +1,6 @@
 <template >
     <button 
-       @onclick="signOut" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer"
+       @onsubmit.prevent="signOut" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer"
        type="button"
        >
             <svg
@@ -32,14 +32,14 @@ const router = useRouter();
 
 const signOut = async () => {
   try {
-    let { error } = await supabase.auth.signOut({});
+    let { error } = await supabase.auth.signOut();
     if (error) throw error;
     router.push({ name: "home" });
   } catch (error) {
     errorsMSG.value = error.message;
     setTimeout(() => {
       errorsMSG.value = null;
-    }, 5000);
+    }, 2000);
 
     return { signOut, errorsMSG };
   }

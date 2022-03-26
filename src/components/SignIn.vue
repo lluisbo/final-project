@@ -99,7 +99,7 @@
         </article>
 
         <article class="flex flex-row">
-          <CustomLink to="internal">
+          <CustomLink to="login">
             Not registered? Create an account!
           </CustomLink>
         </article>

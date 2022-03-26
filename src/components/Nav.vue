@@ -7,10 +7,10 @@
     </section>
       <section>
         <ul class="flex flex-1 justify-end text-sm mt-5 gap-x-10 mr-10">
-          <CustomLink to="internal">Home</CustomLink>
-          <CustomLink to="internal">Profile</CustomLink>
-          <CustomLink to="internal">Sing up</CustomLink>
-          <CustomLink to="internal">Log in</CustomLink>
+          <CustomLink to="home">Home</CustomLink>
+          <CustomLink to="profile">Profile</CustomLink>
+          <CustomLink to="auth">Sing up</CustomLink>
+          <CustomLink to="login">Log in</CustomLink>
         </ul>
       </section>
     </nav>

@@ -117,7 +117,7 @@ const signOut = async () => {
     errorsMSG.value = 'Something went wrong';
     setTimeout(() => {
       errorsMSG.value = null;
-    }, 5000);
+    }, 2000);
 
     return { signOut, errorsMSG };
   }

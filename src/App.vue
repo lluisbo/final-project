@@ -8,6 +8,7 @@ const router = useRouter();
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
 
+
 onMounted(async () => {
   try {
     await userStore.fetchUser(); // here we call fetch user
@@ -16,7 +17,7 @@ onMounted(async () => {
       router.push({ path: "/auth" });
     } else {
       // continue to dashboard
-      router.push({ path: "/profile"}) ;
+      router.push({ path: "/login"}) ;
     }
   } catch (e) {
     console.log(e);
