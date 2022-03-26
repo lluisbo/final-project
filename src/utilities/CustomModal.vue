@@ -72,20 +72,19 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const openModal = ref(false);
 defineProps({
-    buttonText: {
-        type: String,
-        required: true,
-    titleModa: {
-        type: String,
-        required: true
-    }
-
-}
-})
+  buttonText: {
+    type: String,
+    required: true,
+    titleModal: {
+      type: String,
+      required: true,
+    },
+  },
+});
 </script>
 
 <style></style>

@@ -1,6 +1,6 @@
 <template >
     <button 
-    @submit.prevent="signOut" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer"
+       @onclick="signOut" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg cursor-pointer"
        type="button"
        >
             <svg
@@ -23,7 +23,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { supabase } from "../../supabase";
+import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 
 
@@ -34,9 +34,9 @@ const signOut = async () => {
   try {
     let { error } = await supabase.auth.signOut({});
     if (error) throw error;
-    router.push({ name: "login" });
+    router.push({ name: "home" });
   } catch (error) {
-    errorsMSG.value = 'Something went wrong';
+    errorsMSG.value = error.message;
     setTimeout(() => {
       errorsMSG.value = null;
     }, 5000);
