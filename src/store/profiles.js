@@ -6,6 +6,7 @@ export const useProfileStore = defineStore("profiles", {
   }),
 
   actions: {
+    // GET PROFILE BY ID
     async fetchProfiles() {
       const { data: profiles, error } = await supabase()
         .from("profiles")
@@ -17,13 +18,21 @@ export const useProfileStore = defineStore("profiles", {
         console.log(this.profiles);
       }
     },
-    /*** SIGNUP ***/
-    async signUp(username, website, avatar_url) {
-      const { profiles, error } = await supabase({
-        username: username,
-        website: website,
-        avatar: avatar_url,
-      });
+    // CREATE PROFILE
+    async createProfile() {
+      const { data, error } = await supabase.from("profiles").insert([
+        {
+          username: username,
+          avatar_url: avatar_url,
+          website: website,
+        },
+      ]);
+    },
+    // EDIT PROFILE
+    async editProfile() {
+      let { data: profiles, error } = await supabase
+        .from("profiles")
+        .select("updated_at");
       if (error) throw error;
       if (profiles) {
         this.profiles = profiles;

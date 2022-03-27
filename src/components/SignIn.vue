@@ -14,6 +14,10 @@
       >
         <p>{{ errorsMSG }}</p>
       </div>
+      <!--- Throw a success message when a user is logged ---->
+      <div v-if="IsLogged" class="w-full h-auto text-white text-sm font-medium">
+        <p>{{ IsLogged }}</p>
+      </div>
     </section>
 
     <section>
@@ -109,8 +113,8 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
+import { useUserStore } from "../store/user";
 import CustomLink from "../utilities/CustomLink.vue";
 
 // Create data / vars
@@ -118,23 +122,25 @@ import CustomLink from "../utilities/CustomLink.vue";
 const router = useRouter();
 const email = ref(null);
 const password = ref(null);
+//Alerts Error & Success Registration
 const errorsMSG = ref(null);
+const IsLogged = ref(null);
 // Login function
 const signIn = async () => {
   try {
-    const { error } = await supabase.auth.signIn({
-      email: email.value,
-      password: password.value,
-    });
+    const { error } = await useUserStore().signIn(email.value, password.value);
     if (error) throw error;
-    router.push({ name: "profile" });
+    IsLogged.value = "Welcome!";
+    setTimeout(() => {
+      router.push({ name: "profile" });
+    }, 3000);
   } catch (error) {
     errorsMSG.value = `Error: ${error.message}`;
     setTimeout(() => {
       errorsMSG.value = null;
     }, 5000);
   }
-  return { email, password, errorsMSG, signIn };
+  return { signIn };
 };
 </script>
 <style></style>

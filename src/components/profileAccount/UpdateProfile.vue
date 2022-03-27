@@ -64,7 +64,7 @@
         </div>
 
         <section>
-          <form>
+          <form @submit.prevent="editProfile" novalidate>
             <!--- AVATAR ---->
             <section class="w-full">
               <h4 class="block mb-2 text-sm font-medium text-white">
@@ -103,9 +103,10 @@
               </span>
               <input
                 type="text"
-                id="website-admin"
+                id="username"
                 class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Bonnie Green"
+                v-model="username"
               />
             </div>
             <!--- WEBSITE ---->
@@ -125,6 +126,7 @@
                 id="website-admin"
                 class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Bonnie Green"
+                v-model="website"
               />
             </div>
           </form>
@@ -137,9 +139,32 @@
   </div>
 </template>
 <script setup>
-//import CustomModal from '../../utilities/CustomModal.vue';
 import { ref } from "vue";
+import { supabase } from "../../supabase";
+import { useProfileStore } from "../../store/profiles";
+import { storeToRefs } from "pinia";
+
 const openModal = ref(false);
+
+const editProfile = async () => {
+  try {
+    let { data: profiles, error } = await useProfileStore()
+      .editProfile()
+      .from("profiles")
+      .select("updated_at");
+    if (error) throw error;
+    if (profiles) {
+      this.profiles = profiles;
+      console.log(this.profiles);
+    }
+  } catch (error) {
+    errorsMSG.value = `Error: ${error.message}`;
+    setTimeout(() => {
+      errorsMSG.value = null;
+    }, 5000);
+  }
+  return { editProfile };
+};
 </script>
 
 <style></style>

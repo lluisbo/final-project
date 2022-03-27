@@ -153,7 +153,6 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../store/user";
-//import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import CustomLink from "../utilities/CustomLink.vue";
 
