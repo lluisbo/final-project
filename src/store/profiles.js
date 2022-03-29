@@ -1,43 +1,53 @@
 import { defineStore } from "pinia";
+import { supabase } from "../supabase";
+import { useUserStore } from "./user";
 
 export const useProfileStore = defineStore("profiles", {
-  state: () => ({
-    profile: null,
-  }),
-
-  actions: {
-    // GET PROFILE BY ID
-    async fetchProfiles() {
-      const { data: profiles, error } = await supabase()
-        .from("profiles")
-        .select("id");
-      this.profiles = profiles;
-      if (error) throw error;
-      if (profiles) {
-        this.profiles = profiles;
-        console.log(this.profiles);
-      }
-    },
-    // CREATE PROFILE
-    async createProfile() {
-      const { data, error } = await supabase.from("profiles").insert([
-        {
-          username: username,
-          avatar_url: avatar_url,
-          website: website,
+    state: () => ({
+        profiles: null,
+    }),
+    actions: {
+        async fetchProfile() {
+            try {
+                const { data: profiles, error } = await supabase
+                    .from("profiles")
+                    .select("*")
+                    .match({ id: useUserStore().user.id })
+                if (error) throw error;
+                this.profiles = profiles;
+                console.log(profiles);
+                return this.profiles;
+            } catch (error) {
+                console.log(error);
+            }
         },
-      ]);
+        async createProfile(email, id) {
+            await supabase
+                .from("profiles")
+                .insert([
+                    {
+                        id: id,
+                        username: email
+                    }
+                ])
+        },
+        async updateProfile(username, website) {
+            try {
+                const { data: profile, error } = await supabase
+                    .from("profiles")
+                    .update([
+                        {
+                            username: username,
+                            website: website
+                        }
+                    ])
+                    .match({ id: useUserStore().user.id })
+                if (error) throw error;
+                this.profile = profile;
+                return this.profile;
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
-    // EDIT PROFILE
-    async editProfile() {
-      let { data: profiles, error } = await supabase
-        .from("profiles")
-        .select("updated_at");
-      if (error) throw error;
-      if (profiles) {
-        this.profiles = profiles;
-        console.log(this.profiles);
-      }
-    },
-  },
 });

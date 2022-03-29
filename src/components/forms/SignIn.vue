@@ -2,22 +2,27 @@
   <section
     class="max-w-screen-sm w-full mx-auto mt-20 px-4 py-10 bg-amber-700 flex flex-row justify-items-stretch rounded-lg shadow-md bg-blend-overlay"
   >
-    <section class="w-screen h-full px-4">
-      <img
-        class="w-screen contrast-100 mb-4"
-        src="../assets/flat-lay-notebook-with-list-desk.jpeg"
-      />
+     <section class="w-5/6 h-full px-4 flex place-content-center">
       <!--- HANDLE ERRORS ---->
-      <div
+      <section
         v-if="errorsMSG"
-        class="w-full h-auto text-white text-sm font-medium"
+        class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+        role="alert"
       >
+        <span class="flex place-content-center font-medium">Error Alert!</span>
+
         <p>{{ errorsMSG }}</p>
-      </div>
-      <!--- Throw a success message when a user is logged ---->
-      <div v-if="IsLogged" class="w-full h-auto text-white text-sm font-medium">
-        <p>{{ IsLogged }}</p>
-      </div>
+      </section>
+      <!--- Throw a success message when a user is created ---->
+      <section
+        v-if="isLogged"
+        class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+        role="alert"
+      >
+        <span class="font-medium">Success alert!</span>
+        <br />
+        {{ isLogged }}
+      </section>
     </section>
 
     <section>
@@ -102,8 +107,8 @@
           </button>
         </article>
 
-        <article class="flex flex-row">
-          <CustomLink to="login">
+        <article class="flex flex-row text-white">
+          <CustomLink to="auth">
             Not registered? Create an account!
           </CustomLink>
         </article>
@@ -114,33 +119,29 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useUserStore } from "../store/user";
-import CustomLink from "../utilities/CustomLink.vue";
-
-// Create data / vars
+import { useUserStore } from "../../store/user";
+import CustomLink from "../../utilities/CustomLink.vue";
 
 const router = useRouter();
 const email = ref(null);
 const password = ref(null);
 //Alerts Error & Success Registration
-const errorsMSG = ref(null);
-const IsLogged = ref(null);
+const isLogged = ref(null);
+const errorsMSG = ref(null)
 // Login function
-const signIn = async () => {
+async function signIn() {
   try {
-    const { error } = await useUserStore().signIn(email.value, password.value);
-    if (error) throw error;
-    IsLogged.value = "Welcome!";
+    await useUserStore().signIn(email.value, password.value);
+    isLogged.value = "Welcome to your 2 Do List account";
     setTimeout(() => {
-      router.push({ name: "profile" });
-    }, 3000);
+      router.push({ path: "/profile" });
+    }, 2000);
   } catch (error) {
-    errorsMSG.value = `Error: ${error.message}`;
+    errorsMSG.value = error.message;
     setTimeout(() => {
       errorsMSG.value = null;
     }, 5000);
   }
-  return { signIn };
-};
+}
 </script>
 <style></style>

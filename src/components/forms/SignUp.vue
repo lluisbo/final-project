@@ -15,13 +15,13 @@
       </section>
       <!--- Throw a success message when a user is created ---->
       <section
-        v-if="IsSubmit"
+        v-if="isSubmit"
         class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
         role="alert"
       >
         <span class="font-medium">Success alert!</span>
         <br />
-        {{ IsSubmit }}
+        {{ isSubmit }}
       </section>
     </section>
     <section>
@@ -152,9 +152,9 @@
 
 <script setup>
 import { ref } from "vue";
-import { useUserStore } from "../store/user";
+import { useUserStore } from "../../store/user";
 import { useRouter } from "vue-router";
-import CustomLink from "../utilities/CustomLink.vue";
+import CustomLink from "../../utilities/CustomLink.vue";
 
 // Create data / vars
 const router = useRouter();
@@ -163,27 +163,25 @@ const password = ref(null);
 const confirmPassword = ref(null);
 //Alerts Error & Success Registration
 const errorsMSG = ref(null);
-const IsSubmit = ref(null);
+const isSubmit = ref(null);
 
 //Register function
-const signUp = async () => {
+async function signUp() {
   if (password.value === confirmPassword.value) {
     try {
-      const error = await useUserStore().signUp(email.value, password.value);
-      if (error) throw error;
-      IsSubmit.value =
+      await useUserStore().signUp(email.value, password.value);
+      isSubmit.value =
         "Your account has been created, please check out your inbox and confirm your account through the link.";
       setTimeout(() => {
-        router.push({ name: "login" });
-      }, 7000);
+        router.push({ path: "/login" });
+      }, 2000);
     } catch (error) {
       errorsMSG.value = error.message;
       setTimeout(() => {
         errorsMSG.value = null;
       }, 5000);
     }
-    return { signUp };
   }
-};
+}
 </script>
 <style></style>

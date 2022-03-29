@@ -1,6 +1,6 @@
 <template>
   <section>
-    <aside class="w-64 h-full" aria-label="Sidebar">
+    <aside class="w-56 h-full" aria-label="Sidebar">
       <div class="overflow-y-auto py-4 px-3 bg-amber-700 dark:bg-gray-800">
         <ul class="space-y-4">
           <!-- DASHBOARD NAV --->
@@ -42,7 +42,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 text-white whitespace-nowrap"
-                >Lluis B.</span
+                >Username</span
               >
             </a>
           </li>
@@ -82,16 +82,11 @@
         </ul>
       </div>
     </aside>
-    <section>
-      <Footer></Footer>
-    </section>
   </section>
 </template>
 
 <script setup>
-/* Settings Update profile form*/
 import SettingsForm from "./UpdateProfile.vue";
-import SignOut from "../SignOut.vue";
-import Footer from "../Footer.vue";
+import SignOut from "../forms/SignOut.vue";
 </script>
 <style></style>

@@ -64,31 +64,9 @@
         </div>
 
         <section>
-          <form @submit.prevent="editProfile" novalidate>
+          <form @submit.prevent="createProfile" novalidate>
             <!--- AVATAR ---->
-            <section class="w-full">
-              <h4 class="block mb-2 text-sm font-medium text-white">
-                EDIT YOUR PROFILE
-              </h4>
-              <label
-                class="block mb-2 text-sm font-medium text-white dark:text-gray-300"
-                for="user_avatar"
-                >Avatar</label
-              >
-              <input
-                for="large-input"
-                class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                aria-describedby="user_avatar_help"
-                id="user_avatar"
-                type="file"
-              />
-              <div
-                class="mt-1 text-sm text-black dark:text-gray-300"
-                id="user_avatar_help"
-              >
-                Upload your band logo.
-              </div>
-            </section>
+
             <!--- USERNAME ---->
             <label
               for="website-admin"
@@ -123,48 +101,31 @@
               </span>
               <input
                 type="text"
-                id="website-admin"
+                id="website"
                 class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Bonnie Green"
                 v-model="website"
               />
+              <button type="submit">Update</button>
             </div>
           </form>
         </section>
-        <section>
-          <button>Update</button>
-        </section>
+        <section></section>
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
-import { supabase } from "../../supabase";
 import { useProfileStore } from "../../store/profiles";
-import { storeToRefs } from "pinia";
+
 
 const openModal = ref(false);
 
-const editProfile = async () => {
-  try {
-    let { data: profiles, error } = await useProfileStore()
-      .editProfile()
-      .from("profiles")
-      .select("updated_at");
-    if (error) throw error;
-    if (profiles) {
-      this.profiles = profiles;
-      console.log(this.profiles);
-    }
-  } catch (error) {
-    errorsMSG.value = `Error: ${error.message}`;
-    setTimeout(() => {
-      errorsMSG.value = null;
-    }, 5000);
-  }
-  return { editProfile };
-};
+async function createProfile() {
+  await useProfileStore().createProfile(username.value, website.value,
+  );
+}
 </script>
 
 <style></style>
