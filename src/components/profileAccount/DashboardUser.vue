@@ -77,11 +77,14 @@
           </li>
           <!-- LOG OUT --->
           <li class="flex flex-row">
-            <SignOut></SignOut>
+            <SignOut @isLoggedOut="logOut"></SignOut>
           </li>
         </ul>
       </div>
     </aside>
+    <div class="alert">
+      <h2 v-if="isLoggedOut">Success!</h2>
+    </div>
   </section>
 </template>
 

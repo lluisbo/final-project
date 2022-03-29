@@ -10,12 +10,10 @@ import Footer from "../components/Footer.vue";
     </section>
     <section class="flex justify-center bg-gray-400">
       <img
-        class="md:fixed w-full h-auto justify-items-center md:top-50 bg-gray-400"
-        src="../assets/2DoList gives you focus, from work to play. (610 × 310px) (1).svg"
+        class="w-full h-auto justify-items-center md:top-50 bg-gray-400"
+        src="../assets/homeIMG.svg"
       />
-    </section>
-    <section class="flex justify-end">
-      <Footer class="fixed md:bottom-0" />
+      <Footer class="fixed md:bottom-3" />
     </section>
   </section>
 </template>
