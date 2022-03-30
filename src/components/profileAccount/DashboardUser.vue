@@ -1,7 +1,7 @@
 <template>
   <section>
     <aside class="w-56 h-full" aria-label="Sidebar">
-      <div class="overflow-y-auto py-4 px-3 bg-amber-700 dark:bg-gray-800">
+      <div class="overflow-y-auto py-4 px-3 bg-green-700 dark:bg-gray-800">
         <ul class="space-y-4">
           <!-- DASHBOARD NAV --->
           <li class="flex flex-row">
@@ -25,26 +25,23 @@
           </li>
           <!-- USERNAME --->
           <li>
-            <a
-              href="#"
-              class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
+            <svg
+              class="w-6 h-6 text-white transition duration-75 dark:text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                class="w-6 h-6 text-white transition duration-75 dark:text-gray-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span class="flex-1 ml-3 text-white whitespace-nowrap"
-                >Username</span
-              >
-            </a>
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span
+             
+              class="flex-1 ml-3 text-white whitespace-nowrap"
+              >{{ data }}</span
+            >
           </li>
           <!-- TASKS --->
           <li>
@@ -72,24 +69,33 @@
             </a>
           </li>
           <!-- FORM TO UPDATE PROFILE DETAILS --->
-          <li class="flex flex-row">
-            <SettingsForm></SettingsForm>
+          <li class="flex flex-row" @click="update">
+            <UpdateProfile />
           </li>
           <!-- LOG OUT --->
           <li class="flex flex-row">
-            <SignOut @isLoggedOut="logOut"></SignOut>
+            <SignOut />
           </li>
         </ul>
       </div>
     </aside>
-    <div class="alert">
-      <h2 v-if="isLoggedOut">Success!</h2>
-    </div>
   </section>
 </template>
 
 <script setup>
-import SettingsForm from "./UpdateProfile.vue";
+import { ref } from "vue";
+import UpdateProfile from "./UpdateProfile.vue";
 import SignOut from "../forms/SignOut.vue";
+import { useProfileStore } from "../../store/profiles";
+import { useUserStore } from "../../store/user";
+import { supabase } from "../../supabase";
+
+const data = ref(null)
+const dataLoaded = ref(null);
+
+async function nickName() {
+const username = await useProfileStore().profiles.username;
+data.value = profiles.username;
+}
 </script>
 <style></style>

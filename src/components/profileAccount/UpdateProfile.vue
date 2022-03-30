@@ -1,7 +1,6 @@
 <template>
   <!--- OPEN MODAL ---->
   <button
-    @onclick="openModal = !openModal"
     type="button"
     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
     data-modal-toggle="defaultModal"
@@ -23,7 +22,6 @@
   </button>
 
   <div
-    v-bind:class="openModal ? 'show' : null"
     id="defaultModal"
     tabindex="-1"
     aria-hidden="true"
@@ -43,7 +41,6 @@
           </h3>
           <!--- CLOSE MODAL ---->
           <button
-            @onclick="openModal = !openModal"
             type="button"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
             data-modal-toggle="defaultModal"
@@ -64,8 +61,28 @@
         </div>
 
         <section>
-          <form @submit.prevent="createProfile" novalidate>
+          <form @submit.prevent="update" novalidate>
             <!--- AVATAR ---->
+
+            <!-- <label
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              for="user_avatar"
+              >Upload file</label
+            >
+            <input
+              class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              aria-describedby="user_avatar_help"
+              id="user_avatar"
+              type="file"
+             
+            />
+            <div
+              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+              id="user_avatar_help"
+            >
+              A profile picture is useful to confirm your are logged into your
+              account
+            </div> -->
 
             <!--- USERNAME ---->
             <label
@@ -118,13 +135,20 @@
 <script setup>
 import { ref } from "vue";
 import { useProfileStore } from "../../store/profiles";
+import { useUserStore } from "../../store/user";
 
-
-const openModal = ref(false);
-
-async function createProfile() {
-  await useProfileStore().createProfile(username.value, website.value,
+const isUpdated = ref(null);
+const errorsMSG = ref(null);
+async function update() {
+  await useProfileStore().updateProfile(
+    username,
+    website,
+   
+    
   );
+
+  console.log("hello");
+  isUpdated.value = "profile updated";
 }
 </script>
 

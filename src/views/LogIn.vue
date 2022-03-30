@@ -1,13 +1,13 @@
 <template>
-  <section class="flex justify-center bg-gray-400">
-    <img
-      class="w-full h-auto justify-items-center md:top-50 bg-gray-400"
-      src="../assets/homeIMG.svg"
-    />
+  <section>
+    <section>
+      <Nav />
+    </section>
+    <section>
+      <SignIn class="md:top-2" />
+      <Footer class="fixed md:bottom-0 bg-white" />
+    </section>
   </section>
-  <Nav />
-  <SignIn />
-  <Footer />
 </template>
 <script setup>
 import Nav from "../components/Nav.vue";

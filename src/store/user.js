@@ -38,6 +38,11 @@ export const useUserStore = defineStore("user", {
       const { user, error } = await supabase.auth.signOut();
       this.user = null;
     },
+     async logInWithSocialProvider()  {
+      const { user, error } = await supabase.auth.signIn({ provider: 'github' });
+      if (error) throw error;
+      return user;
+  },
     persist: {
       enabled: true,
       strategies: [

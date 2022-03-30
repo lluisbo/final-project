@@ -5,15 +5,13 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <section class="relative">
-    <section class="absolute md:right-0 md:top-2 z-40">
+    <section>
       <Nav />
     </section>
-    <section class="flex justify-center bg-gray-400">
-      <img
-        class="w-full h-auto justify-items-center md:top-50 bg-gray-400"
-        src="../assets/homeIMG.svg"
-      />
-      <Footer class="fixed md:bottom-3" />
+
+    <section>
+      <img class="w-full h-auto" src="../assets/homeIMG.svg" />
+      <Footer class="fixed md:bottom-0" />
     </section>
   </section>
 </template>

@@ -5,9 +5,10 @@ import Profile from "../views/Profile.vue";
 import LogIn from "../views/LogIn.vue";
 import Home from "../views/Home.vue";
 
+
 const routes = [
   {
-    path: "/home",
+    path: "/",
     component: Home,
     name: "home",
     meta: {
@@ -50,10 +51,11 @@ const router = createRouter({
 
 // Route guard for auth routes
 router.beforeEach(async (to, from, next) => {
-  const user = await useUserStore().user;
-  console.log(user)
+  const local = localStorage.getItem('supabase.auth.token')
+  // const user = await useUserStore().user;
+  console.log(local)
   if (to.matched.some((res) => res.meta.auth)) {
-    if (user) {
+    if (local) {
       next();
       return;
     }

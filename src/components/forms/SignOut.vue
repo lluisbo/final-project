@@ -20,27 +20,15 @@
         ></path></svg
       ><span class="flex-1 ml-3 text-white whitespace-nowrap">Log out</span>
     </button>
-    <section class="w-5/6 h-full px-4 flex place-content-center">
-      <!--- HANDLE ERRORS ---->
-      <section
-        v-if="errorsMSG"
-        class="absolute p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
-        role="alert"
-      >
-        <span class="flex place-content-center font-medium">Error Alert!</span>
-
-        <p>{{ errorsMSG }}</p>
-      </section>
-      <!--- Throw a success message when a user is created ---->
-      <section
-        v-if="isLoggedOut"
-        class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-        role="alert"
-      >
-        <span class="font-medium">Success alert!</span>
-        <br />
-        {{ isLoggedOut }}
-      </section>
+    <!--- Throw a success message when a user ends a session ---->
+    <section
+      v-if="isLoggedOut"
+      class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+      role="alert"
+    >
+      <span class="font-medium">Success alert!</span>
+      <br />
+      {{ isLoggedOut }}
     </section>
   </section>
 </template>
@@ -51,8 +39,8 @@ import { useUserStore } from "../../store/user";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+//ALERT Logout 
 const isLoggedOut = ref(null);
-//const user = useUserStore().fetchUser(email.value);
 
 async function signOut() {
   await useUserStore().signOut();
