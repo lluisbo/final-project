@@ -40,7 +40,7 @@ export const useUserStore = defineStore("user", {
       this.user = null;
     },
      async logInWithSocialProvider()  {
-      const { user, error } = await supabase.auth.signIn({ provider: provider});
+      const { user, error } = await supabase.auth.signIn({ provider: ['github', 'twitter']});
       if (error) throw error;
       return user;
   },
