@@ -115,7 +115,7 @@
         Sign in with Facebook
       </button>
       <button 
-         @click="logInWithSocialProvider('twitter')"  
+         @click="logInWithSocialProvider()"  
         type="button"
         class="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2"
       >
@@ -137,7 +137,7 @@
         Sign in with Twitter
       </button>
       <button 
-       @click="logInWithSocialProvider('github')"  
+       @click="logInWithSocialProvider()"  
         type="button"
         class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
       >
@@ -238,6 +238,7 @@ const password = ref(null);
 //Alerts Error & Success Registration
 const isLogged = ref(null);
 const errorsMSG = ref(null);
+const provider = ref("");
 // Login function
 async function signIn() {
   try {
@@ -258,6 +259,7 @@ async function signIn() {
 async function logInWithSocialProvider()  {
   try {
     await useUserStore().logInWithSocialProvider();
+   
   } catch (error) {
     errorsMSG.value = error.message;
     setTimeout(() => {

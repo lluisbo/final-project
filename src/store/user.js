@@ -1,3 +1,4 @@
+import { isTemplateNode } from "@vue/compiler-core";
 import { defineStore } from "pinia";
 import { supabase } from "../supabase";
 
@@ -39,7 +40,7 @@ export const useUserStore = defineStore("user", {
       this.user = null;
     },
      async logInWithSocialProvider()  {
-      const { user, error } = await supabase.auth.signIn({ provider: 'github' });
+      const { user, error } = await supabase.auth.signIn({ provider: provider});
       if (error) throw error;
       return user;
   },
