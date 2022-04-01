@@ -1,18 +1,15 @@
 <script setup>
-import DashboardUser from "../components/profileAccount/DashboardUser.vue";
+//import DashboardUser from "../components/profileAccount/DashboardUser.vue";
 import Footer from "../components/Footer.vue";
-import NewTask from "../components/TasksComponent/NewTask.vue";
-import TaskItem from "../components/TasksComponent/TaskItem.vue";
+import DashboardUser from "../components/profileAccount/DashboardUser.vue";
 </script>
 
 <template>
   <section>
     <section class="flex flex-row">
-      <DashboardUser />
-      <section>
-        <TaskItem class="w-full h-96 bg-red-100 border-2"/>
-        <NewTask class="w-full bg-red-100 border-2" />
-      </section>
+      <article>
+        <DashboardUser />
+      </article>
     </section>
     <Footer class="fixed md:bottom-0 bg-white" />
   </section>

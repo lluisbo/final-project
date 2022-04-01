@@ -1,6 +1,7 @@
 <template>
   <section
-    class="relative pt-16 pb-0 md:py-3 w-3/5 mx-auto mt-10 px-4 bg-green-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
+    
+    class="relative pt-16 pb-0 md:py-3 w-2/3 mx-auto mt-10 px-4 bg-green-700 rounded-lg flex flex-row gap-5 justify-between shadow-md bg-blend-overlay"
   >
     <section class="px-10">
       <!--- SIGN UP FORM ---->
@@ -38,39 +39,6 @@
             required
             autocomplete="off"
             v-model="email"
-          />
-        </div>
-         <label
-          for="email-adress-icon"
-          class="block mb-2 text-sm font-medium text-white"
-          >Username</label
-        >
-        <div class="relative">
-          <div
-            class="flex absolute inset-y-3.5 left-0 pl-3 pointer-events-none"
-          >
-            <svg
-              class="w-5 h-5 text-amber-900"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-              />
-              <path
-                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-              />
-            </svg>
-          </div>
-          <input
-            type="text"
-            id="username"
-            class="text-sm py-2.5 px-4 pl-10 p-2.5 rounded w-80 border-2 border-amber-500 focus:outline-none"
-            placeholder="Choose username"
-            required
-            autocomplete="off"
-            v-model="username"
           />
         </div>
 
@@ -202,7 +170,7 @@ const isSubmit = ref(null);
 async function signUp() {
   if (password.value === confirmPassword.value) {
     try {
-      await useUserStore().signUp(email.value, password.value, username.value);
+      await useUserStore().signUp(email.value, password.value);
       isSubmit.value =
         "Your account has been created, please check out your inbox and confirm your account through the link.";
       setTimeout(() => {
@@ -217,4 +185,10 @@ async function signUp() {
   }
 }
 </script>
-<style></style>
+<style>
+ body { background-image: url('../../assets/signUpIMG.jpeg');
+        background-attachment: fixed;
+        background-position: left center;
+        background-size: cover;
+ }
+</style>

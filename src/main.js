@@ -6,4 +6,8 @@ const pinia = createPinia();
 import "./styles/index.css";
 import "flowbite";
 
+
+ 
+
+
 createApp(App).use(router).use(pinia).mount("#app");

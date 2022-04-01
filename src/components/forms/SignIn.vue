@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative pt-16 pb-0 md:py-3 w-2/3 mx-auto mt-10 px-4 bg-green-700 flex flex-row gap-5 justify-between shadow-md bg-blend-overlay"
+    class="relative pt-16 pb-0 md:py-3 w-2/3 mx-auto mt-10 px-4 bg-green-700 rounded-lg flex flex-row gap-5 justify-between shadow-md bg-blend-overlay"
   >
     <section class="px-10">
       <!--- SIGN IN FORM ---->
@@ -114,7 +114,8 @@
         </svg>
         Sign in with Facebook
       </button>
-      <button
+      <button 
+           
         type="button"
         class="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2"
       >
@@ -135,7 +136,8 @@
         </svg>
         Sign in with Twitter
       </button>
-      <button @click="logInWithSocialProvider('github')"
+      <button 
+       @click="logInWithSocialProvider('github')"  
         type="button"
         class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
       >

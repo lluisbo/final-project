@@ -1,15 +1,17 @@
 <template>
-  <header class="text-green-700">
+  <header
+    class="container w-full flex flex-col gap-4 shadow-ls  font-bold sm:flex-row"
+  >
     <nav
-      clas="container py-5 px-4 flex flex-row gap-4 items-center sm:flex-row"
+      class="container py-3 px-4 flex flex-row gap-4  sm:flex-row"
     >
-    <section class="flex items-center gasp-x-4">
-       <img src="../assets/logo.svg" class="w-10" />
-       <h1>2DoList</h1>
-    </section>
-   
-      <section>
-        <ul class="flex flex-1 justify-end text-sm gap-x-10 mr-10">
+      <section class="flex items-center gasp-x-4">
+        <img src="../assets/logo.svg" class="w-12" />
+        <h1 class="text-white text-2xl text-center pr-5 font-bold">2DoList</h1>
+      </section>
+
+      <section class="py-3">
+        <ul class="absolute flex md:right-10 flex-row text-green-800 text-xl gap-x-10">
           <CustomLink to="/">Home</CustomLink>
           <CustomLink to="profile">Profile</CustomLink>
           <CustomLink to="auth">Register</CustomLink>

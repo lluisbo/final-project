@@ -28,7 +28,7 @@
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center"
   >
     <div
-      class="relative p-4 w-full max-w-2xl h-full md:h-auto pt-16 pb-0 md:py-3 mx-auto mt-10 px-4 bg-amber-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
+      class="relative p-4 w-full max-w-2xl h-full md:h-auto pt-16 pb-0 md:py-3 mx-auto mt-10 px-4 bg-green-700 flex flex-row justify-items-stretch shadow-md bg-blend-overlay"
     >
       <div class="relative w-full dark:bg-gray-700">
         <div
@@ -42,7 +42,7 @@
           <!--- CLOSE MODAL ---->
           <button
             type="button"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            class="text-amber-700 bg-transparent  hover:text-white  text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
             data-modal-toggle="defaultModal"
           >
             <svg
@@ -61,73 +61,139 @@
         </div>
 
         <section>
-          <form @submit.prevent="update" novalidate>
+          <form @submit.prevent="handleDetailsProfile" novalidate>
             <!--- AVATAR ---->
-
-            <!-- <label
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              for="user_avatar"
-              >Upload file</label
+            <label
+              for="website-admin"
+              class="block mb-2 text-sm mt-2 font-medium text-white dark:text-gray-300"
+              >Avatar</label
             >
-            <input
-              class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              aria-describedby="user_avatar_help"
-              id="user_avatar"
-              type="file"
-             
-            />
-            <div
-              class="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="user_avatar_help"
-            >
-              A profile picture is useful to confirm your are logged into your
-              account
-            </div> -->
-
+            <div class="flex">
+              <span
+                class="inline-flex items-center px-3 text-sm text-white bg-gray- rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                  ></path>
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="username"
+                class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="upload a picture"
+                v-model="avatar"
+              />
+            </div>
             <!--- USERNAME ---->
             <label
               for="website-admin"
-              class="block mb-2 text-sm font-medium text-white dark:text-gray-300"
+              class="block mb-2 text-sm mt-2 font-medium text-white dark:text-gray-300"
               >Username</label
             >
             <div class="flex">
               <span
                 class="inline-flex items-center px-3 text-sm text-white bg-gray- rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
               >
-                @
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  ></path>
+                </svg>
               </span>
               <input
                 type="text"
                 id="username"
                 class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Bonnie Green"
+                placeholder="PJ Harvey"
                 v-model="username"
               />
             </div>
-            <!--- WEBSITE ---->
+            <!---WEBSITE ---->
             <label
               for="website-admin"
-              class="block mb-2 text-sm font-medium text-white dark:text-gray-300"
+              class="block mb-2 text-sm mt-2 font-medium text-white dark:text-gray-300"
               >Website</label
             >
             <div class="flex">
               <span
-                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+                class="inline-flex items-center px-3 text-sm text-white bg-gray- rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
               >
-                @
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                  ></path>
+                </svg>
               </span>
               <input
                 type="text"
                 id="website"
                 class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Bonnie Green"
+                placeholder="www.exemple.com"
                 v-model="website"
               />
-              <button type="submit">Update</button>
             </div>
+            <article class="mt-4 mb-4">
+              <button
+                class="bg-amber-600 hover:bg-amber-900 text-white py-2 px-4 rounded"
+              >
+                Update Profile
+              </button>
+            </article>
           </form>
         </section>
-        <section></section>
+        <section class="w-5/6 h-full px-4 flex place-content-center">
+          <!--- HANDLE ERRORS ---->
+          <section
+            v-if="errorsMSG"
+            class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+            role="alert"
+          >
+            <span class="flex place-content-center font-medium"
+              >Error Alert!</span
+            >
+
+            <p>{{ errorsMSG }}</p>
+          </section>
+          <!--- Throw a success message when a user is created ---->
+          <section
+            v-if="isUpdate"
+            class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert"
+          >
+            <span class="font-medium">Success alert!</span>
+            <br />
+            {{ isUpdate }}
+          </section>
+        </section>
       </div>
     </div>
   </div>
@@ -137,18 +203,29 @@ import { ref } from "vue";
 import { useProfileStore } from "../../store/profiles";
 import { useUserStore } from "../../store/user";
 
-const isUpdated = ref(null);
-const errorsMSG = ref(null);
-async function update() {
-  await useProfileStore().updateProfile(
-    username,
-    website,
-   
-    
-  );
+const username = ref("");
+const avatar = ref("");
+const isUpdate = ref("");
+const errorsMSG = ref("");
 
-  console.log("hello");
-  isUpdated.value = "profile updated";
+async function handleDetailsProfile() {
+  try {
+    await useProfileStore().updateProfile(
+      username.value,
+      website.value,
+      avatar.value
+    );
+    // await useProfileStore().updateFile(avatar.value);
+    isUpdate.value = "Your profile has been uploaded";
+    setTimeout(() => {
+      isUpdate.value = null;
+    }, 3000);
+  } catch (error) {
+    errorsMSG.value = error.message;
+    setTimeout(() => {
+      errorsMSG.value = null;
+    }, 5000);
+  }
 }
 </script>
 

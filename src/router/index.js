@@ -4,6 +4,9 @@ import Auth from "../views/Auth.vue";
 import Profile from "../views/Profile.vue";
 import LogIn from "../views/LogIn.vue";
 import Home from "../views/Home.vue";
+import NewTask1 from "../views/NewTask1.vue";
+
+
 
 
 const routes = [
@@ -43,6 +46,17 @@ const routes = [
       auth: true,
     },
   },
+  {
+    path: "/profile/task",
+    component: NewTask1,
+    name: "newtask1",
+    meta: {
+      title: "newtask1",
+      auth: true,
+    },
+  },
+ 
+  
 ];
 const router = createRouter({
   history: createWebHistory(),
